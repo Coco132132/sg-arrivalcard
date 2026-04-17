@@ -1,77 +1,525 @@
-<!doctype html><html lang="en"><head><script>(function(){
-  var needsPolyfill=(function(){
-    try{
-      if(typeof crypto==="undefined"||typeof crypto.randomUUID!=="function")return true;
-      if(typeof Object.hasOwn!=="function")return true;
-      if(typeof[].at!=="function")return true;
-      if(typeof[].findLast!=="function")return true;
-      return false;
-    }catch(e){return true}
-  })();
-  if(needsPolyfill){
-    document.write('<script src="https://lf-miaoda-static.feishucdn.com/app_4jyjpckhhun03/2/client/polyfills.js"><\/script>');
-  }
-})();</script><meta charset="UTF-8"><link rel="icon" type="image/svg+xml" href="{{appAvatar}}"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{appName}}</title><link href="https://lf3-static.bytednsdoc.com/obj/eden-cn/ylcylz_fsph_ryhs/ljhwZthlaukjlkulzlp/feisuda/feisuda.svg" rel="shortcut icon"><script type="module" crossorigin src="https://lf-miaoda-static.feishucdn.com/app_4jyjpckhhun03/2/client/assets/index-BAS1l7lY.js"></script><link rel="modulepreload" crossorigin href="https://lf-miaoda-static.feishucdn.com/app_4jyjpckhhun03/2/client/assets/rolldown-runtime-COnpUsM8.js"><link rel="modulepreload" crossorigin href="https://lf-miaoda-static.feishucdn.com/app_4jyjpckhhun03/2/client/assets/radix-a6lXgUOA.js"><link rel="modulepreload" crossorigin href="https://lf-miaoda-static.feishucdn.com/app_4jyjpckhhun03/2/client/assets/dataloom-CLyUMRh5.js"><link rel="modulepreload" crossorigin href="https://lf-miaoda-static.feishucdn.com/app_4jyjpckhhun03/2/client/assets/toolkit-BN5T9ihB.js"><link rel="stylesheet" crossorigin href="https://lf-miaoda-static.feishucdn.com/app_4jyjpckhhun03/2/client/assets/index-D7FTiQcz.css"><script>window.csrfToken = "{{csrfToken}}";
-        window.userId = "{{userId}}";
-        window.tenantId = "{{tenantId}}";
-        window.appId = "{{appId}}";
-        window.ENVIRONMENT = "{{environment}}";
-        const appInfo = {
-          name: "{{appName}}",
-          avatar: "{{{appAvatar}}}",
-          description: "{{appDescription}}",
-        };
-        if (appInfo.name) {
-          window._appInfo = appInfo;
-        }</script><script>const slardarScript = document.createElement('script');
-    slardarScript.src = 'https://lf3-short.ibytedapm.com/slardar/fe/sdk-web/browser.cn.js?bid=apaas_miaoda&globalName=KSlardarWeb';
-    slardarScript.crossOrigin = 'anonymous';
-
-    // Add onload event handler
-    slardarScript.onload = function() {
-      // Initialize after script loads
-      if (window.KSlardarWeb) {
-        window.KSlardarWeb('context.merge', {
-          tenantId: window.tenantId ?? '',
-          appId: window.appId ?? '',
-        });
-        window.KSlardarWeb('init', {
-          bid: 'apaas_miaoda',
-          env: window.ENVIRONMENT || 'online',
-          userId: window.userId ?? '',
-        });
-        window.KSlardarWeb('start');
-      }
-    };
-
-    // Add error handler
-    slardarScript.onerror = function() {
-      console.warn('Failed to load Slardar script');
-    };
-
-    // Add script to page
-    document.head.appendChild(slardarScript);</script><script src="https://sf3-scmcdn-cn.feishucdn.com/obj/unpkg/byted/performance/0.1.2/dist/performance.iife.js" crossorigin="anonymous" defer="defer"></script><script>(function (win, export_obj) {
-    win['LogAnalyticsObject'] = export_obj;
-    if (!win[export_obj]) {
-      function _collect() {
-        _collect.q.push(arguments);
-      }
-      _collect.q = _collect.q || [];
-      win[export_obj] = _collect;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SG Arrival Card Guide</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇸🇬</text></svg>">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8fafc; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Header */
+    header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+    nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .logo { font-weight: 700; font-size: 1.25rem; color: #1e40af; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .nav-links a { padding: 0.5rem 1rem; color: #4b5563; text-decoration: none; border-radius: 6px; transition: all 0.2s; font-size: 0.9rem; }
+    .nav-links a:hover, .nav-links a.active { background: #eff6ff; color: #1e40af; }
+    
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: #fff; padding: 4rem 0; text-align: center; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+    .hero-badges { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .badge { background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
+    .badge-icon { margin-right: 0.5rem; }
+    
+    /* Sections */
+    section { padding: 3rem 0; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .card { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .card h3 { color: #1e40af; margin-bottom: 0.75rem; }
+    .card p { color: #6b7280; font-size: 0.95rem; }
+    .card-link { display: inline-block; margin-top: 1rem; color: #3b82f6; text-decoration: none; font-weight: 500; }
+    .card-link:hover { text-decoration: underline; }
+    
+    /* Page content */
+    .page-header { background: #fff; padding: 2rem 0; border-bottom: 1px solid #e5e7eb; margin-bottom: 2rem; }
+    .page-content { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .page-content h2 { color: #1e40af; margin: 1.5rem 0 1rem; font-size: 1.5rem; }
+    .page-content h3 { color: #374151; margin: 1.25rem 0 0.75rem; font-size: 1.25rem; }
+    .page-content p { margin-bottom: 1rem; color: #4b5563; }
+    .page-content ul, .page-content ol { margin: 1rem 0 1rem 1.5rem; color: #4b5563; }
+    .page-content li { margin-bottom: 0.5rem; }
+    
+    /* Alert boxes */
+    .alert { padding: 1rem 1.25rem; border-radius: 8px; margin: 1rem 0; border-left: 4px solid; }
+    .alert-info { background: #eff6ff; border-color: #3b82f6; }
+    .alert-warning { background: #fef3c7; border-color: #f59e0b; }
+    .alert-danger { background: #fee2e2; border-color: #ef4444; }
+    .alert-success { background: #d1fae5; border-color: #10b981; }
+    
+    /* Tool */
+    .tool-container { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); max-width: 600px; margin: 2rem auto; }
+    .tool-input { width: 100%; padding: 1rem; font-size: 1.1rem; border: 2px solid #e5e7eb; border-radius: 8px; margin-bottom: 1rem; }
+    .tool-input:focus { outline: none; border-color: #3b82f6; }
+    .btn { background: #1e40af; color: #fff; padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+    .btn:hover { background: #1e3a8a; }
+    .tool-result { margin-top: 1.5rem; padding: 1rem; background: #f0fdf4; border-radius: 8px; border: 1px solid #86efac; }
+    .tool-result.error { background: #fef2f2; border-color: #fca5a5; }
+    
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid #e5e7eb; padding: 1rem 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-weight: 600; color: #1e40af; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { margin-top: 0.75rem; color: #6b7280; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-arrow { transition: transform 0.2s; }
+    
+    /* Footer */
+    footer { background: #1e293b; color: #94a3b8; padding: 2rem 0; text-align: center; margin-top: 4rem; }
+    footer a { color: #60a5fa; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .disclaimer { background: #fef3c7; border: 1px solid #fbbf24; padding: 1rem; text-align: center; font-size: 0.9rem; color: #92400e; margin-top: 1rem; border-radius: 8px; }
+    
+    /* Hidden pages */
+    .page { display: none; }
+    .page.active { display: block; }
+    
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.75rem; }
+      .nav-links { display: none; }
+      .mobile-nav { display: block; }
+      .card-grid { grid-template-columns: 1fr; }
     }
-    win[export_obj].l = +new Date();
-  })(window, 'collectEvent');
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">🇸🇬 SG Arrival Card Guide</div>
+        <div class="nav-links">
+          <a href="#" data-page="home" class="active">Home</a>
+          <a href="#" data-page="official-free">Official & Free</a>
+          <a href="#" data-page="3-day-rule">3-Day Rule</a>
+          <a href="#" data-page="who-needs">Who Needs</a>
+          <a href="#" data-page="group-submission">Group</a>
+          <a href="#" data-page="common-mistakes">Mistakes</a>
+          <a href="#" data-page="date-checker">Date Checker</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-  // Create tea sdk script element
-    const teaScript = document.createElement('script');
-    teaScript.src = 'https://lf3-cdn-tos.bytescm.com/obj/static/log-sdk/collect/5.1/collect.js';
-    teaScript.crossOrigin = 'anonymous';
-    teaScript.async = true;
+  <!-- Home Page -->
+  <div id="home" class="page active">
+    <section class="hero">
+      <div class="container">
+        <h1>Singapore Arrival Card Guide</h1>
+        <p>Everything you need to know about submitting your SG Arrival Card before visiting Singapore.</p>
+        <div class="hero-badges">
+          <span class="badge"><span class="badge-icon">🔗</span>Official Channel Only</span>
+          <span class="badge"><span class="badge-icon">💚</span>100% Free</span>
+          <span class="badge"><span class="badge-icon">📅</span>Submit 3 Days Before</span>
+        </div>
+        <a href="#" class="btn" data-page="official-free">Start Here</a>
+      </div>
+    </section>
+    
+    <section>
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:1rem;">Quick Navigation</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>🔗 Official Channel</h3>
+            <p>Learn how to submit through the only official Singapore ICA platform.</p>
+            <a href="#" class="card-link" data-page="official-free">Learn More →</a>
+          </div>
+          <div class="card">
+            <h3>📅 3-Day Rule</h3>
+            <p>Understand the timing requirements for submitting your arrival card.</p>
+            <a href="#" class="card-link" data-page="3-day-rule">Learn More →</a>
+          </div>
+          <div class="card">
+            <h3>👥 Group Submission</h3>
+            <p>How to submit arrival cards for families or groups traveling together.</p>
+            <a href="#" class="card-link" data-page="group-submission">Learn More →</a>
+          </div>
+          <div class="card">
+            <h3>⚠️ Common Mistakes</h3>
+            <p>Avoid these frequent errors that can cause delays or rejections.</p>
+            <a href="#" class="card-link" data-page="common-mistakes">Learn More →</a>
+          </div>
+          <div class="card">
+            <h3>❓ Who Needs to Submit</h3>
+            <p>Check if you need to submit an SG Arrival Card for your trip.</p>
+            <a href="#" class="card-link" data-page="who-needs">Learn More →</a>
+          </div>
+          <div class="card">
+            <h3>📆 Date Checker Tool</h3>
+            <p>Calculate the earliest date you can submit your arrival card.</p>
+            <a href="#" class="card-link" data-page="date-checker">Try It Now →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-    // Add error handler
-    teaScript.onerror = function() {
-      console.warn('Failed to load Tea script');
-    };
+  <!-- Official & Free Page -->
+  <div id="official-free" class="page">
+    <div class="page-header">
+      <div class="container">
+        <h1>Official Channel & Free of Charge</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-content">
+        <div class="alert alert-info">
+          <strong>🔗 Official Website:</strong> The SG Arrival Card must be submitted through the <a href="https://www.ica.gov.sg/" target="_blank">Singapore Immigration & Checkpoints Authority (ICA)</a> website only.
+        </div>
+        
+        <h2>How to Submit</h2>
+        <p>Follow these steps to submit your SG Arrival Card:</p>
+        <ol>
+          <li>Visit the official ICA SG Arrival Card submission page</li>
+          <li>Select "Foreign Visitor" or "Singapore Resident" based on your status</li>
+          <li>Fill in your personal details and travel information</li>
+          <li>Review and submit</li>
+          <li>Save or screenshot your confirmation</li>
+        </ol>
+        
+        <h2>Is It Really Free?</h2>
+        <p><strong>Yes, the SG Arrival Card is completely free to submit.</strong> There is no fee whatsoever for this service.</p>
+        <div class="alert alert-warning">
+          <strong>⚠️ Scam Alert:</strong> If you encounter any website or service asking for payment to submit your SG Arrival Card, it is a scam. The only official channel is through ICA directly.
+        </div>
+        
+        <h2>Official Links</h2>
+        <ul>
+          <li><a href="https://www.ica.gov.sg/" target="_blank">ICA Official Website</a></li>
+          <li><a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/sg-arrival-card" target="_blank">SG Arrival Card Information</a></li>
+        </ul>
+        
+        <h2>FAQ</h2>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Is the SG Arrival Card free? <span class="faq-arrow">▼</span></div>
+          <div class="faq-answer">Yes, submitting the SG Arrival Card through the official ICA website is completely free of charge.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Can I pay someone to submit for me? <span class="faq-arrow">▼</span></div>
+          <div class="faq-answer">You should submit it yourself through the official ICA website. Third-party services that charge fees are not official and may not be legitimate.</div>
+        </div>
+        
+        <p style="margin-top:2rem;color:#6b7280;font-size:0.85rem;">Last updated: April 2026</p>
+      </div>
+    </div>
+  </div>
 
-    // Add script to page
-    document.head.appendChild(teaScript);</script><meta property="og:title" content="{{appName}}"><meta property="og:description" content="{{appDescription}}"><meta property="og:image" content="{{appAvatar}}"><meta name="description" content="{{appDescription}}"></head><body><div id="root"></div></body></html>
+  <!-- 3-Day Rule Page -->
+  <div id="3-day-rule" class="page">
+    <div class="page-header">
+      <div class="container">
+        <h1>The 3-Day Rule</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-content">
+        <div class="alert alert-info">
+          <strong>📅 Important:</strong> You can submit your SG Arrival Card <strong>up to 3 days before</strong> your arrival date in Singapore.
+        </div>
+        
+        <h2>Understanding the Timing</h2>
+        <p>The SG Arrival Card must be submitted within a specific time window:</p>
+        <ul>
+          <li><strong>Earliest:</strong> 3 days (72 hours) before your arrival date</li>
+          <li><strong>Latest:</strong> Before you pass through immigration in Singapore</li>
+        </ul>
+        
+        <h2>Examples</h2>
+        <div class="alert alert-success">
+          <strong>Example 1:</strong> If you're arriving on Friday, you can submit your card on Tuesday (3 days earlier).
+        </div>
+        <div class="alert alert-success">
+          <strong>Example 2:</strong> If you're arriving on Monday, you can submit from the previous Thursday.
+        </div>
+        
+        <h2>What If I Submit Too Early?</h2>
+        <p>If you submit more than 3 days before arrival, your submission may not be valid when you arrive in Singapore.</p>
+        
+        <h2>What If I Submit Too Late?</h2>
+        <p>You should still be able to submit at the airport or checkpoint, but it's recommended to do it in advance to avoid delays.</p>
+        
+        <h2>Use Our Date Checker Tool</h2>
+        <p>Not sure when you can submit? Use our <a href="#" data-page="date-checker">Date Checker Tool</a> to find out!</p>
+        
+        <p style="margin-top:2rem;color:#6b7280;font-size:0.85rem;">Last updated: April 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Who Needs Page -->
+  <div id="who-needs" class="page">
+    <div class="page-header">
+      <div class="container">
+        <h1>Who Needs to Submit</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-content">
+        <h2>Who Must Submit the SG Arrival Card?</h2>
+        <p>Almost all visitors entering Singapore need to submit an SG Arrival Card. This includes:</p>
+        <ul>
+          <li><strong>Tourists</strong> from all countries</li>
+          <li><strong>Business travelers</strong></li>
+          <li><strong>Transit passengers</strong> staying in Singapore</li>
+          <li><strong>Visit pass holders</strong></li>
+          <li><strong>Work pass holders</strong> entering Singapore for the first time</li>
+        </ul>
+        
+        <h2>Who Does NOT Need to Submit?</h2>
+        <div class="alert alert-success">
+          <ul style="margin:0;list-style:none;">
+            <li>✓ Singapore Citizens</li>
+            <li>✓ Singapore Permanent Residents</li>
+            <li>✓ Malaysia Citizens entering via land checkpoints (automated clearance)</li>
+            <li>✓ Diplomatic staff with diplomatic passports (in some cases)</li>
+          </ul>
+        </div>
+        
+        <h2>For Malaysian Citizens</h2>
+        <p>Malaysian citizens entering Singapore via the land checkpoints (Woodlands & Tuas) with valid auto-pass clearance do not need to submit an SG Arrival Card. However, if you're entering via other means or don't have auto-pass, you should submit one.</p>
+        
+        <h2>Children</h2>
+        <p>Each individual, including children and infants, must have their own SG Arrival Card submitted. Parents or guardians can submit on behalf of their children.</p>
+        
+        <h2>FAQ</h2>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Do I need to submit if I'm just transiting? <span class="faq-arrow">▼</span></div>
+          <div class="faq-answer">If you're staying in Singapore even briefly, you should submit an SG Arrival Card. If you're in transit without leaving the airport, you may not need one.</div>
+        </div>
+        
+        <p style="margin-top:2rem;color:#6b7280;font-size:0.85rem;">Last updated: April 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group Submission Page -->
+  <div id="group-submission" class="page">
+    <div class="page-header">
+      <div class="container">
+        <h1>Group Submission</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-content">
+        <div class="alert alert-info">
+          <strong>👥 Good News:</strong> You can submit SG Arrival Cards for up to <strong>10 members</strong> in a single submission if you're traveling together as a group!
+        </div>
+        
+        <h2>How to Submit for a Group</h2>
+        <ol>
+          <li>Go to the official ICA SG Arrival Card page</li>
+          <li>Select "Group Submission" or "Add Another Traveler"</li>
+          <li>Enter the details of the group leader/first person</li>
+          <li>Add details for each additional member (up to 9 more)</li>
+          <li>Review all information carefully</li>
+          <li>Submit the entire group at once</li>
+        </ol>
+        
+        <h2>Requirements for Group Submission</h2>
+        <ul>
+          <li>All group members must be arriving in Singapore on the same date</li>
+          <li>All members must be entering via the same checkpoint</li>
+          <li>You can include up to 10 people total in one submission</li>
+          <li>Each person needs their own passport information</li>
+        </ul>
+        
+        <h2>Best Practices</h2>
+        <div class="alert alert-success">
+          <ul style="margin:0;list-style:none;">
+            <li>✓ Double-check all passport numbers before submitting</li>
+            <li>✓ Ensure all travel dates match</li>
+            <li>✓ Keep the confirmation for each family member</li>
+            <li>✓ Submit at least 1 day before arrival to allow time for corrections</li>
+          </ul>
+        </div>
+        
+        <h2>For Families with Children</h2>
+        <p>Each family member, including children of any age, needs their own entry. You can submit for your entire family in one group submission if arriving together.</p>
+        
+        <p style="margin-top:2rem;color:#6b7280;font-size:0.85rem;">Last updated: April 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Common Mistakes Page -->
+  <div id="common-mistakes" class="page">
+    <div class="page-header">
+      <div class="container">
+        <h1>Common Mistakes & Scam Warnings</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-content">
+        <div class="alert alert-danger">
+          <strong>⚠️ Scam Alert:</strong> There are many fraudulent websites and services that claim to help with SG Arrival Card submissions. Always use the official ICA website.
+        </div>
+        
+        <h2>Common Mistakes to Avoid</h2>
+        
+        <h3>1. Wrong Passport Information</h3>
+        <p>Double-check your passport number, nationality, and expiry date. Errors can cause delays at immigration.</p>
+        
+        <h3>2. Submitting Too Early or Too Late</h3>
+        <p>Remember: submit within 3 days before arrival. Not earlier, not later than arrival.</p>
+        
+        <h3>3. Using Unofficial Websites</h3>
+        <div class="alert alert-danger">
+          <strong>Warning:</strong> Only use the official ICA website. Third-party sites may:
+          <ul style="margin:0.5rem 0 0 1.5rem;">
+            <li>Charge unnecessary fees</li>
+            <li>Collect your personal data</li>
+            <li>Submit incorrect information</li>
+          </ul>
+        </div>
+        
+        <h3>4. Forgetting to Submit</h3>
+        <p>Some travelers forget entirely. While you may be able to submit at the checkpoint, it's best to do it in advance.</p>
+        
+        <h3>5. Wrong Purpose of Visit</h3>
+        <p>Select the correct purpose of visit. Using the wrong category can cause issues.</p>
+        
+        <h2>How to Spot Scams</h2>
+        <ul>
+          <li>Websites that charge fees for submission</li>
+          <li>Websites that ask for payment via unusual methods</li>
+          <li>Websites that promise "guaranteed approval"</li>
+          <li>Unofficial domains (not ending in .gov.sg)</li>
+          <li>Unsolicited emails or messages offering to help</li>
+        </ul>
+        
+        <h2>Official Resources</h2>
+        <ul>
+          <li><a href="https://www.ica.gov.sg/" target="_blank">ICA Official Website</a></li>
+          <li><a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/sg-arrival-card" target="_blank">Official SG Arrival Card Info</a></li>
+        </ul>
+        
+        <p style="margin-top:2rem;color:#6b7280;font-size:0.85rem;">Last updated: April 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Date Checker Tool -->
+  <div id="date-checker" class="page">
+    <div class="page-header">
+      <div class="container">
+        <h1>SGAC Date Checker</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="tool-container">
+        <p>Enter your arrival date to find out when you can submit your SG Arrival Card.</p>
+        <input type="date" id="arrival-date" class="tool-input">
+        <button class="btn" onclick="checkDate()" style="width:100%">Check Submission Window</button>
+        <div id="result"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 SG Arrival Card Guide</p>
+      <p>
+        <a href="https://www.ica.gov.sg/" target="_blank">Official ICA Website</a> | 
+        <a href="#" data-page="official-free">Official & Free</a> | 
+        <a href="#" data-page="common-mistakes">Scam Warnings</a>
+      </p>
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> This website is an independent guide and is not affiliated with the Singapore government or ICA. Always verify information from official sources.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetPage = e.target.dataset.page;
+        
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        // Show target page
+        document.getElementById(targetPage).classList.add('active');
+        
+        // Update nav links
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        document.querySelector(`.nav-links a[data-page="${targetPage}"]`)?.classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      });
+    });
+
+    // FAQ toggle
+    function toggleFaq(el) {
+      el.parentElement.classList.toggle('open');
+    }
+
+    // Date Checker
+    function checkDate() {
+      const arrivalInput = document.getElementById('arrival-date').value;
+      const resultDiv = document.getElementById('result');
+      
+      if (!arrivalInput) {
+        resultDiv.innerHTML = '<div class="tool-result error">Please select your arrival date.</div>';
+        return;
+      }
+      
+      const arrivalDate = new Date(arrivalInput);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      // Calculate earliest submission date (3 days before)
+      const earliestDate = new Date(arrivalDate);
+      earliestDate.setDate(earliestDate.getDate() - 3);
+      
+      // Calculate latest submission date (day before arrival)
+      const latestDate = new Date(arrivalDate);
+      latestDate.setDate(latestDate.getDate() - 1);
+      
+      // Format dates
+      const formatDate = (d) => d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      
+      // Check status
+      let status, statusClass;
+      if (today < earliestDate) {
+        status = 'not_yet';
+        statusClass = '';
+      } else if (today >= earliestDate && today <= arrivalDate) {
+        status = 'valid';
+        statusClass = 'success';
+      } else {
+        status = 'passed';
+        statusClass = 'error';
+      }
+      
+      let html = '<div class="tool-result ' + statusClass + '">';
+      html += '<strong>Arrival Date:</strong> ' + formatDate(arrivalDate) + '<br>';
+      html += '<strong>Earliest Submission:</strong> ' + formatDate(earliestDate) + '<br>';
+      html += '<strong>Latest Submission:</strong> ' + formatDate(latestDate) + '<br><br>';
+      
+      if (status === 'not_yet') {
+        const daysUntil = Math.ceil((earliestDate - today) / (1000 * 60 * 60 * 24));
+        html += '<strong style="color:#f59e0b;">⏳ Not yet open for submission.</strong><br>';
+        html += 'You can submit from ' + formatDate(earliestDate) + ' (' + daysUntil + ' days from now).';
+      } else if (status === 'valid') {
+        html += '<strong style="color:#10b981;">✅ Submission window is open!</strong><br>';
+        html += 'You can submit now through your arrival date.';
+      } else {
+        html += '<strong style="color:#ef4444;">⚠️ Submission window has passed.</strong><br>';
+        html += 'You should still be able to submit at the checkpoint, but may experience delays.';
+      }
+      
+      html += '</div>';
+      resultDiv.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
